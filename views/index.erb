@@ -1,1 +1,20 @@
-<h1>hello world</h1>
+<h1>Puppy Love</h1>
+
+<h3>About us:</h3>
+<p> Bringing the gift of love in the form of socialising to (wo)man's best friend. some stats about how socialising is important for dogs ladeedaa </p> 
+
+<% unless logged_in? %>
+    <!-- login form --> 
+    <form action="/login" method = "post">
+    <input type="text" name = "email" value ="Email address" > 
+    <br>
+    <input type="password" name = "password" value = "Password">
+    <br>
+    <button>Log In</button>
+    </form>
+<% end %>
+
+<br>
+<br>
+<!-- sign up -->
+<a href="/dogs/new"> Sign Up </a>

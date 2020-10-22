@@ -1,0 +1,26 @@
+
+<% if user_id == dog_owner_id%>
+    <h1>Your Profile</h1>
+<% else %>
+    <h2>Meet...</h2>
+<% end %>
+
+
+<h2><%= name %></h2>
+
+<img src=<%= image_url %> alt="" srcset="">
+<p>Age: <%= age %></p>
+<p>Gender: <%= gender %></p>
+<p>Breed: <%= breed %></p>
+<p>Bio: <%= bio %></p>
+<p>Location: <%= loc_suburb %>, <%= loc_state %>, <%= loc_country %></p>
+
+<% if user_id == dog_owner_id%>
+    <a href="/dogs/<%= dog_id %>/edit">edit</a>
+<% else %>
+    <a href="#">Message</a>
+
+    <%# 
+    <!- Like me button here!!-> %>
+<% end %>
+
