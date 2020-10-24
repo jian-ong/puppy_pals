@@ -5,6 +5,7 @@
   <title>Hello World</title>
   <link rel='stylesheet' href='/stylesheets/main.css'>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 </head>
 <body>
   <header>
@@ -13,7 +14,7 @@
       <% dog = find_dog_by_user_id(current_user['id'])%>
       <a href="/dogs/<%= dog['id'] %>">Your Profile</a>
       <a href="#">Messages</a>
-      <a href="#">Search</a>
+      <a href="/search">Search</a>
       <p>You are logged in as <%= current_user['email'] %></p>
 
       <form action="/logout" method="post">

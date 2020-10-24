@@ -1,0 +1,14 @@
+*{
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #fff;
+    text-align: center
+}                       
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    gap: 5px;
+}

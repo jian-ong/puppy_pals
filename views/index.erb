@@ -1,20 +1,45 @@
-<h1>Puppy Love</h1>
+<head>
+    <link rel="stylesheet" href="/stylesheets/homepage.css">
+</head>
 
-<h3>About us:</h3>
-<p> Bringing the gift of love in the form of socialising to (wo)man's best friend. some stats about how socialising is important for dogs ladeedaa </p> 
+<body>
+    <header>
+        <% if logged_in? %>
+        <% dog = find_dog_by_user_id(current_user['id'])%>
+        <a href="/dogs/<%= dog['id'] %>">Your Profile</a>
+        <a href="#">Messages</a>
+        <a href="/search">Search</a>
+        <p>You are logged in as <%= current_user['email'] %></p>
 
-<% unless logged_in? %>
-    <!-- login form --> 
-    <form action="/login" method = "post">
-    <input type="text" name = "email" value ="Email address" > 
-    <br>
-    <input type="password" name = "password" value = "Password">
-    <br>
-    <button>Log In</button>
-    </form>
-<% end %>
+        <form action="/logout" method="post">
+            <input type="hidden" name="_method" value="delete">
+            <button>Log out</button>
+        </form>
+        <% end %>
+    <div class="title">
+        <h1>Puppy Pals</h1>
+        <p> Bringing the gift of love in the form of socialising to our furry friends </p> 
+    </div>
+    </header>
 
-<br>
-<br>
-<!-- sign up -->
-<a href="/dogs/new"> Sign Up </a>
+    <section class="grid-container">
+        <div class="pictures">
+        </div>
+        <div class="login_signup">
+            <% unless logged_in? %>
+                <!-- login form --> 
+                <form action="/login" method = "post">
+                <input type="text" name = "email" value ="Email address" > 
+                <br>
+                <input type="password" name = "password" value = "Password">
+                <br>
+                <button>Log In</button>
+                </form>
+                <br>
+
+                <!-- sign up -->
+                <a href="/dogs/new"> Sign Up </a>
+            <% end %>
+        </div>
+    </section>
+</body>

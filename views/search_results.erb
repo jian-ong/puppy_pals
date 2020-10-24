@@ -1,0 +1,13 @@
+<h1>Search Results</h1>
+
+
+<% dogs.each do |dog| %>
+
+    <% unless dog['user_id'] == user_id %>
+        <img src="<%= dog["image_url"] %>" alt="" srcset="">
+        <a href="/dogs/<%= dog["id"] %>"><%= dog["username"] %></a>
+        <br>
+        <br>
+    <% end %>
+
+<% end %>

@@ -47,7 +47,7 @@ def run_sql(sql, params=[])
 end
 
 get '/' do
-  erb :index
+  erb :index, layout: false
 end
 
 #sign up form
@@ -74,7 +74,7 @@ post "/signed_up" do
   # insert into dogs
   user = find_user_by_email(params['email'])
 
-  results_users = run_sql("INSERT INTO dogs(username, image_url, age,gender, breed, bio, loc_suburb,loc_state,loc_country, user_id) VALUES('#{params['name']}', '#{params['image_url']}', '#{params['age']}', '#{params['gender']}', '#{params['breed']}', '#{params['bio']}', '#{params['loc_suburb']}','#{params['loc_state']}','#{params['loc_country']}','#{user['id']}');")
+  results_users = run_sql("INSERT INTO dogs(username, image_url, age,gender, breed, bio, loc_suburb,loc_state,loc_country, user_id) VALUES('#{params['name']}', '#{params['image_url']}', '#{params['age']}', '#{params['gender'].downcase.capitalize}', '#{params['breed']}', '#{params['bio']}', '#{params['loc_suburb']}','#{params['loc_state']}','#{params['loc_country']}','#{user['id']}');")
   
   redirect '/'
 end
@@ -120,6 +120,7 @@ delete '/logout' do
   redirect '/'
 end
 
+#edit form
 get '/dogs/:id/edit' do 
   results = find_dog_by_id(params['id'])
 
@@ -128,6 +129,7 @@ get '/dogs/:id/edit' do
   }
 end
 
+#actual edit
 patch '/dogs/:id' do 
   sql = "UPDATE dogs SET username='#{params['name']}', image_url='#{params['image_url']}', age='#{params['age']}', gender='#{params['gender']}', breed='#{params['breed']}', bio='#{params['bio']}', loc_suburb='#{params['loc_suburb']}', loc_state='#{params['loc_state']}', loc_country='#{params['loc_country']}' WHERE id = '#{params['id']}';"
 
@@ -135,3 +137,55 @@ patch '/dogs/:id' do
 
   redirect "/dogs/#{params['id']}"
 end 
+
+get '/search' do
+  erb :search
+end
+
+get '/search_results' do
+
+  if params['gender'].downcase.capitalize == "Female"
+    sql = "SELECT * FROM dogs 
+    WHERE username ILIKE '%#{params['name']}%'
+    AND age ILIKE '%#{params['age']}%'
+    AND gender = 'Female'
+    AND breed ILIKE '%#{params['breed']}%'
+    AND bio ILIKE '%#{params['keywords']}%'
+    AND (loc_suburb ILIKE '%#{params['location']}%'
+    OR loc_state ILIKE '%#{params['location']}%'
+    OR loc_country ILIKE '%#{params['location']}%')
+    ;"
+
+  elsif params['gender'].downcase.capitalize == "Male"
+    sql = "SELECT * FROM dogs 
+    WHERE username ILIKE '%#{params['name']}%'
+    AND age ILIKE '%#{params['age']}%'
+    AND gender = 'Male'
+    AND breed ILIKE '%#{params['breed']}%'
+    AND bio ILIKE '%#{params['keywords']}%'
+    AND (loc_suburb ILIKE '%#{params['location']}%'
+    OR loc_state ILIKE '%#{params['location']}%'
+    OR loc_country ILIKE '%#{params['location']}%')
+    ;"
+  
+  else  
+    sql = "SELECT * FROM dogs 
+    WHERE username ILIKE '%#{params['name']}%'
+    AND age ILIKE '%#{params['age']}%'
+    AND breed ILIKE '%#{params['breed']}%'
+    AND bio ILIKE '%#{params['keywords']}%'
+    AND (loc_suburb ILIKE '%#{params['location']}%'
+    OR loc_state ILIKE '%#{params['location']}%'
+    OR loc_country ILIKE '%#{params['location']}%')
+    ;"
+
+  end
+
+  results = run_sql(sql)
+
+  erb :search_results, locals: {
+    dogs: results,
+    user_id: current_user["id"]
+  }
+
+end
