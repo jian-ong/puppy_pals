@@ -4,11 +4,104 @@
 
 body {
     background-color: #fff;
-    text-align: center
+    text-align: center;
+    font-family: 'Open Sans', sans-serif;
+    margin: 0 auto;
+
 }                       
+
+h1  {
+    font-family: 'Pacifico', cursive;
+    font-size: 90px;
+    padding: 380px 50px 0px 50px;
+    margin: 0px;
+}
+
+.title {
+    background-image: url(https://www.dogboardingandtrainingmiami.com/wp-content/uploads/2018/08/dreamstime_xs_45116795.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    height: 600px;
+    opacity: 0.6;
+    color: rgb(245, 245, 245);
+    text-shadow: 1px 1px #161603;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.title p {
+    font-size: 20px;
+    margin: 10px 0px;
+}
 
 .grid-container {
     display: grid;
     grid-template-columns: 50% 50%;
-    gap: 5px;
+}
+
+
+input {
+    width: 300px;
+    height: 40px;
+    margin: 5px;
+    border-radius: 5px;
+    border: 1px solid lightgray;
+    color: lightgray;
+    text-align: center;
+}
+
+button {
+    width: 300px;
+    height: 40px;
+    margin: 5px;
+    background-color:#e0e2d5;
+    border-radius: 5px;
+    border: 1px solid lightgray;
+    text-align: center;
+    padding: 10px;
+    font-size: 17px;
+}
+
+.returning {
+    margin: 20px auto 0px;
+}
+
+form {
+    margin: 0px;
+}
+
+a {
+    width: 300px;
+    height: 40px;
+    margin: 0 auto;
+    display: block;
+    background-color:#e0e2d5;
+    border-radius: 5px;
+    border: 1px solid lightgray;
+    padding: 5px;
+    text-decoration: none;
+    color: black;
+    font-family: 'Open Sans', sans-serif;
+}
+
+img {
+display: inline;
+width: 125px;
+height: 125px;
+}
+
+h3 {
+    font-size: 30px;
+    font-family: 'Pacifico', cursive;
+}
+
+.join_us {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    gap: 0;
+    margin: 0px 30px;
+}
+
+.about_us {
+    margin: 0px 30px;
 }

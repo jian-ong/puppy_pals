@@ -5,6 +5,8 @@
   <title>Hello World</title>
   <link rel='stylesheet' href='/stylesheets/main.css'>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Pacifico&display=swap" rel="stylesheet">
+
 
 </head>
 <body>
@@ -13,7 +15,7 @@
     <% if logged_in? %>
       <% dog = find_dog_by_user_id(current_user['id'])%>
       <a href="/dogs/<%= dog['id'] %>">Your Profile</a>
-      <a href="#">Messages</a>
+      <a href="/my_messages">My messages</a>
       <a href="/search">Search</a>
       <p>You are logged in as <%= current_user['email'] %></p>
 

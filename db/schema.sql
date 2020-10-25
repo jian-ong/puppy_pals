@@ -30,3 +30,11 @@ AND (loc_suburb ILIKE '%new south wales%'
 OR loc_state ILIKE '%new south wales%'
 OR loc_country ILIKE '%new south wales%')
 ;
+
+CREATE TABLE messages (id SERIAL PRIMARY KEY, sender_id INTEGER, recipient_id INTEGER, created_at timestamptz, message_content TEXT);
+
+SELECT * FROM messages 
+  WHERE (sender_id=6
+  AND recipient_id=2)
+  OR (sender_id=2
+  AND recipient_id=6);

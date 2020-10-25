@@ -1,0 +1,20 @@
+<h1>Private Messaging</h1>
+
+<ul>
+    <% messages.each do |message| %>
+    <li>
+    <img src="<%= message["image_url"] %>" alt="" srcset=""> <br>
+    <%= message['username'] %> <br>
+    <%= message['created_at'] %> <br>
+    <%= message['message_content'] %>
+    </li>
+<% end %>
+</ul>
+
+<img src="<%= current_dog["image_url"] %>" alt="" srcset=""> 
+<form action="/new_message" method="post">
+    <input type="hidden" name="recipient_id" value="<%= recipient_dog['id'] %>">
+    <input type="hidden" name="sender_id" value="<%= current_dog['id'] %>">
+    <input type="text" name="message_content" value="Type Message Here">
+    <button>Send Message</button>
+</form>

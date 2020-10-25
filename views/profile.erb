@@ -1,5 +1,5 @@
 
-<% if user_id == dog_owner_id%>
+<% if current_user_id == dog_owner_id%>
     <h1>Your Profile</h1>
 <% else %>
     <h2>Meet...</h2>
@@ -15,10 +15,10 @@
 <p>Bio: <%= bio %></p>
 <p>Location: <%= loc_suburb %>, <%= loc_state %>, <%= loc_country %></p>
 
-<% if user_id == dog_owner_id%>
+<% if current_user_id == dog_owner_id%>
     <a href="/dogs/<%= dog_id %>/edit">edit</a>
 <% else %>
-    <a href="#">Message</a>
+    <a href="/dogs/<%= dog_id %>/messages">Message Me</a>
 
     <%# 
     <!- Like me button here!!-> %>
