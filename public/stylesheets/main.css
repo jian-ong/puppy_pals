@@ -3,17 +3,212 @@
 }
 
 body {
-    background-color: white;
+    background-image: url(https://www.publicdomainpictures.net/pictures/340000/velka/green-grass-background-texture-15888451613lU.jpg);
+    color: white;
     text-align: center;
     font-family: 'Open Sans', sans-serif;
-    font-family: 'Pacifico', cursive;
+    margin: 20px 250px 20px 0px;
 }
 
-a{
+a {
     text-decoration: none;
+    color: black;
 }
 
-li{
+a.hover {
+    cursor: pointer;
+}
+
+button.hover {
+    cursor: pointer;
+}
+
+li {
     list-style: none;
 }
 
+.nav_bar {
+    /* display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    gap: 10px;
+    margin: 0 auto; */
+    height: 50px;
+    width: 200px;
+    position: absolute;
+    right: 40px;
+
+}
+
+.nav_bar a {
+    background-color: #e0e2d5;
+    color: black;
+    padding: 15px;
+    border-radius: 5px;
+    border: 1px solid lightgray;
+    display: block;
+    font-size: 15px;
+    margin: 5px 0px;
+    
+}
+
+.nav_bar button {
+    background-color: black;
+    color: white;
+    padding: 15px;
+    border-radius: 5px;
+    border: 1px solid lightgray;
+    height: 100%;
+    width: 100%;
+    font-size: 15px;
+}
+
+.current_login {
+    margin: 20px 5px;
+    text-align: left;
+    display: block;
+}
+
+h1 {
+    font-family: 'Pacifico', cursive;
+    font-size: 3em;
+}
+
+.transbox {
+    margin: 50px;
+    padding: 50px 80px 30px 80px;
+    background-color: rgba(7, 7, 7, 0.8);
+    padding: 10px 100px 30px;
+}
+
+footer a {
+    color: white;
+}
+
+.transbox a {
+    color: white;
+}
+
+.edit_button {
+    display: block;
+    height: 40px;
+    width: 300px;
+    padding: 10px;
+    border: 1px solid lightgray;
+    margin: 0 auto 10px;        
+    border-radius: 5px;
+}
+
+.delete_button button{
+    height: 40px;
+    width: 300px;
+    padding: 10px;
+    border: 1px solid  rgb(252, 82, 82);
+    background-color: rgb(252, 82, 82);
+    margin: 0 auto 10px;        
+    border-radius: 5px;
+    
+}
+
+.profile_pic {
+    border: 20px solid rgb(15, 11, 11);
+    max-width: 600px;
+    max-height: 600px;
+}
+
+.message_button {
+    display: block;
+    height: 40px;
+    width: 300px;
+    padding: 10px;
+    border: 1px solid lightgray;
+    margin: 0 auto 10px;        
+    border-radius: 5px;
+}
+
+.my_messages_pic {
+    width: 150px;
+    height: 150px;
+    border: 5px solid black;
+    text-align: right;
+}
+
+.my_messages_username {
+    font-size: 20px;
+    padding: 5px;
+
+}
+
+.my_messages_grid {
+    display: grid;
+    grid-template-columns: 150px 2fr;
+    text-align: left;
+    align-items: center;
+}
+
+.messages_pic {
+    max-width: 150px;
+    max-height: 150px;
+    border: 5px solid black;
+
+}
+
+.current_dog_pic {
+    width: 110px;
+    height: 110px;
+    /* border: 5px solid black; */
+    display: inline;
+}
+
+.new_message {
+    margin: 10px auto;
+    text-align: left;
+}
+
+.new_message_form {
+    display: inline;
+}
+
+.send_button {
+    width: 80px;
+    height: 40px;
+    text-align: top;
+    margin: 0 auto;
+    align-items: center;
+}
+
+.messages_grid {
+    display: grid;
+    grid-template-columns: 150px 2fr 150px;
+    align-items: center;
+}
+
+.messages_content_self {
+    text-align: right;
+    padding: 5px;
+}
+
+.messages_content_friend {
+    text-align: left;
+    padding: 5px;
+}
+
+.search_grid {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    /* text-align: left; */
+    margin: 0 auto;
+}
+
+.search_image {
+    height: 150px;
+    width: 150px;
+    border: 5px solid black;
+    text-align: right;
+}
+
+.search_dog_name{
+    padding: 15px;
+    text-align: left;
+}
+
+\

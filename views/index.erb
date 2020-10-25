@@ -20,7 +20,7 @@
         <% end %>
         <div class="title">
             <h1>Puppy Pals</h1>
-            <p> Bringing the gift of love in the form of socialising to our furry friends </p> 
+            <p> Finding more furry friends for man's best friends</p> 
         </div>
     </header>
 
@@ -49,19 +49,18 @@
         <div class="login_signup">
             <% unless logged_in? %>
                 <!-- login form --> 
-                <p class="returning">Returning member?</p>
                 <h3>Sign in</h3>
                 <form action="/login" method = "post">
-                <input type="text" name = "email" value ="Email address" > 
+                <input type="text" name = "email" placeholder="Email Address" value ="" > 
                 <br>
-                <input type="password" name = "password" value = "Password">
+                <input type="password" name = "password" placeholder="Password" value = "">
                 <br>
                 <button>Log In</button>
                 </form>
                 <br>
 
                 <!-- sign up -->
-                <p>New members?</p>
+                <p>New member?</p>
                 <a href="/dogs/new"> Sign Up </a>
             <% end %>
         </div>

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Hello World</title>
+  <title>Puppy Pals - by Jian</title>
   <link rel='stylesheet' href='/stylesheets/main.css'>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Pacifico&display=swap" rel="stylesheet">
@@ -11,22 +11,33 @@
 </head>
 <body>
   <header>
-    <a href="/">Home</a>
-    <% if logged_in? %>
-      <% dog = find_dog_by_user_id(current_user['id'])%>
-      <a href="/dogs/<%= dog['id'] %>">Your Profile</a>
-      <a href="/my_messages">My messages</a>
-      <a href="/search">Search</a>
-      <p>You are logged in as <%= current_user['email'] %></p>
-
-      <form action="/logout" method="post">
-        <input type="hidden" name="_method" value="delete">
-        <button>Log out</button>
-      </form>
-    <% end %>
+    <section class ="nav_bar">
+      <% if logged_in? %>
+        <a href="/">Home</a>
+        <% dog = find_dog_by_user_id(current_user['id'])%>
+        <a href="/dogs/<%= dog['id'] %>">Your Profile</a>
+        <a href="/my_messages">My Messages</a>
+        <a href="/search">Search</a>
+        <form class ="logout" action="/logout" method="post">
+          <input type="hidden" name="_method" value="delete">
+          <button>Log out</button>
+        </form>
+      <% end %>
+    </section>
   </header>
 
-  <%= yield %>
+  <section class="transbox">
+      <% if logged_in? %>
+        <p class="current_login">You are logged in as <%= current_user['email'] %></p>
+      <% end %>
+    <%= yield %>
 
+    <footer>
+     &copy<a href="http://github.com/jian-ong/">jian 2020</a>
+    </footer>
+
+  </section>
+
+  
 </body>
 </html>

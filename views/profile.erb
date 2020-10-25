@@ -1,30 +1,31 @@
 
+
 <% if current_user_id == dog_owner_id%>
     <h1>Your Profile</h1>
 <% else %>
-    <h2>Meet...</h2>
+    <h1>Meet...</h1>
 <% end %>
 
 
 <h2><%= name %></h2>
 
-<img src=<%= image_url %> alt="" srcset="">
-<p>Age: <%= age %></p>
-<p>Gender: <%= gender %></p>
-<p>Breed: <%= breed %></p>
-<p>Bio: <%= bio %></p>
-<p>Location: <%= loc_suburb %>, <%= loc_state %>, <%= loc_country %></p>
-
+<img class ="profile_pic" src=<%= image_url %> alt="" srcset="">
+<p><b>Age:</b> <%= age %></p>
+<p><b>Gender:</b> <%= gender %></p>
+<p><b>Breed:</b> <%= breed %></p>
+<p><b>About Me:</b> <%= bio %></p>
+<p><b>Location: </b><%= loc_suburb %>, <%= loc_state %>, <%= loc_country %></p>
+<br>
 <% if current_user_id == dog_owner_id%>
-    <a href="/dogs/<%= dog_id %>/edit">edit</a>
-    <form action="/dogs/<%= dog_id %>" method ="post">
-    <input type="hidden" name="_method" value ="delete">
-    <button>Delete Account</button>
-</form>
+    <%# edit button %>
+    <a class ="edit_button" href="/dogs/<%= dog_id %>/edit">Edit Profile</a>
+    <%# delete button %>
+    <form class="delete_button" action="/dogs/<%= dog_id %>" method ="post">
+        <input type="hidden" name="_method" value ="delete">
+        <button>Delete Account</button>
+    </form>
 <% else %>
-    <a href="/dogs/<%= dog_id %>/messages">Message Me</a>
-
-    <%# 
-    <!- Like me button here!!-> %>
+    <%# message button %>
+    <a class="message_button"href="/dogs/<%= dog_id %>/messages">Message Me</a>   
 <% end %>
 

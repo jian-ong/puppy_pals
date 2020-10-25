@@ -1,8 +1,12 @@
-
-<% results.each do |result| %>
-
-<img src="<%=result['image_url'] %>" alt="" srcset="">
-<a href="/dogs/<%= result['dog_id']%>/messages"><%= result['username'] %>
-</a>
-
+<h1>My Messages</h1>
+<% if results.nil? %>
+    <p>You have no messages. <a href="/search">Search</a> for some friends and message them from their profile page. </p>
+<% else %>
+    <div class="my_messages_grid">
+        <% results.each do |result| %>
+            <img class="my_messages_pic" src="<%=result['image_url'] %>" alt="" srcset="">
+            <a class ="my_messages_username" href="/dogs/<%= result['dog_id']%>/messages"><%= result['username'] %>
+            </a>
+        <% end %>
+    </div>
 <% end %>

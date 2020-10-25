@@ -4,10 +4,10 @@
 <% dogs.each do |dog| %>
 
     <% unless dog['user_id'] == user_id %>
-        <img src="<%= dog["image_url"] %>" alt="" srcset="">
-        <a href="/dogs/<%= dog["id"] %>"><%= dog["username"] %></a>
-        <br>
-        <br>
+        <div class="search_grid">
+        <img class ="search_image"src="<%= dog["image_url"] %>" alt="" srcset="">
+        <a class ="search_dog_name"href="/dogs/<%= dog["id"] %>"><%= dog["username"] %></a>
+        </div>
     <% end %>
 
 <% end %>
