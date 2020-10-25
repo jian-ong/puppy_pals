@@ -130,11 +130,12 @@ footer a {
     height: 150px;
     border: 5px solid black;
     text-align: right;
+    margin: 5px;
 }
 
 .my_messages_username {
     font-size: 20px;
-    padding: 5px;
+    margin: 10px;
 
 }
 
@@ -149,13 +150,13 @@ footer a {
     max-width: 150px;
     max-height: 150px;
     border: 5px solid black;
+    margin: 5px;
 
 }
 
 .current_dog_pic {
     width: 110px;
     height: 110px;
-    /* border: 5px solid black; */
     display: inline;
 }
 
@@ -194,9 +195,10 @@ footer a {
 
 .search_grid {
     display: grid;
-    grid-template-columns: 50% 50%;
-    /* text-align: left; */
+    grid-template-columns: 150px 1fr;
     margin: 0 auto;
+    gap: 5px;
+    align-items: center;
 }
 
 .search_image {
@@ -204,11 +206,10 @@ footer a {
     width: 150px;
     border: 5px solid black;
     text-align: right;
+    margin: 5px;
 }
 
 .search_dog_name{
     padding: 15px;
     text-align: left;
 }
-
-\

@@ -66,45 +66,51 @@ post "/signed_up" do
 
   #check if user exists in users table
   user_check = run_sql("SELECT * FROM users where email = '#{params['email']}';")
+  # user_check = run_sql("SELECT * FROM users where email = $1;", params['email'])
 
-  #if not, create user
+
+  "#{user_check.num_tuples}"
+  # if not, create user
   if user_check.num_tuples == 0 
     password_digest = BCrypt::Password.create(params['password']);
     results_users = run_sql("INSERT INTO users(email, password_digest) VALUES('#{params['email']}', '#{password_digest}');")
+  
+    # insert into dogs
+    user = find_user_by_email(params['email'])
 
+    results_users = run_sql("INSERT INTO dogs(username, image_url, age,gender, breed, bio, loc_suburb,loc_state,loc_country, user_id) VALUES($$#{params['name']}$$, '#{params['image_url']}', '#{params['age']}', '#{params['gender'].downcase.capitalize}', $$#{params['breed']}$$, $$#{params['bio']}$$, $$#{params['loc_suburb']}$$, $$#{params['loc_state']}$$,$$#{params['loc_country']}$$,'#{user['id']}');")
+    redirect '/'
+  
   else 
     erb :duplicate_error
   end
 
-  # insert into dogs
-  user = find_user_by_email(params['email'])
-
-  results_users = run_sql("INSERT INTO dogs(username, image_url, age,gender, breed, bio, loc_suburb,loc_state,loc_country, user_id) VALUES('#{params['name']}', '#{params['image_url']}', '#{params['age']}', '#{params['gender'].downcase.capitalize}', '#{params['breed']}', '#{params['bio']}', '#{params['loc_suburb']}','#{params['loc_state']}','#{params['loc_country']}','#{user['id']}');")
-  
-  redirect '/'
 end
 
 #dog profile
 get '/dogs/:id' do
   redirect_if_not_authenticated
   results = run_sql("SELECT * FROM dogs WHERE id = #{params['id']};")
-  current_dog = find_dog_by_user_id(current_user["id"])
-  
-  erb :profile, locals: {
-    current_user_id: current_user["id"],
-    current_dog_id: current_dog["id"],
-    dog_id: results[0]["id"],
-    dog_owner_id: results[0]["user_id"],
-    name: results[0]["username"],
-    image_url: results[0]["image_url"],
-    age: results[0]["age"],
-    gender: results[0]["gender"],
-    breed: results[0]["breed"],
-    bio: results[0]["bio"],
-    loc_suburb: results[0]["loc_suburb"],
-    loc_state: results[0]["loc_state"],
-    loc_country: results[0]["loc_country"]
-  }
+  if results.num_tuples == 0
+    erb :not_found
+    else 
+    current_dog = find_dog_by_user_id(current_user["id"])
+    erb :profile, locals: {
+      current_user_id: current_user["id"],
+      current_dog_id: current_dog["id"],
+      dog_id: results[0]["id"],
+      dog_owner_id: results[0]["user_id"],
+      name: results[0]["username"],
+      image_url: results[0]["image_url"],
+      age: results[0]["age"],
+      gender: results[0]["gender"],
+      breed: results[0]["breed"],
+      bio: results[0]["bio"],
+      loc_suburb: results[0]["loc_suburb"],
+      loc_state: results[0]["loc_state"],
+      loc_country: results[0]["loc_country"]
+    }
+  end 
 end
 
 post '/login' do
@@ -194,7 +200,7 @@ end
 #actual creating msg
 post '/new_message' do
   redirect_if_not_authenticated
-  sql = "INSERT INTO messages (sender_id, recipient_id, created_at, message_content) VALUES ('#{params['sender_id']}','#{params['recipient_id']}', '#{Time.now}' ,'#{params['message_content']}');"
+  sql = "INSERT INTO messages (sender_id, recipient_id, created_at, message_content) VALUES ('#{params['sender_id']}','#{params['recipient_id']}', '#{Time.now}' ,$$#{params['message_content']}$$);"
 
   results = run_sql(sql)
 
@@ -206,7 +212,7 @@ end
 #actual edit
 patch '/dogs/:id' do 
   redirect_if_not_authenticated
-  sql = "UPDATE dogs SET username='#{params['name']}', image_url='#{params['image_url']}', age='#{params['age']}', gender='#{params['gender']}', breed='#{params['breed']}', bio='#{params['bio']}', loc_suburb='#{params['loc_suburb']}', loc_state='#{params['loc_state']}', loc_country='#{params['loc_country']}' WHERE id = '#{params['id']}';"
+  sql = "UPDATE dogs SET username=$$#{params['name']}$$, image_url='#{params['image_url']}', age='#{params['age']}', gender='#{params['gender']}', breed=$$#{params['breed']}$$, bio=$$#{params['bio']}$$, loc_suburb=$$#{params['loc_suburb']}$$, loc_state=$$#{params['loc_state']}$$, loc_country=$$#{params['loc_country']}$$ WHERE id = '#{params['id']}';"
 
   run_sql(sql)
 
@@ -257,12 +263,14 @@ get '/search_results' do
   end
 
   results = run_sql(sql)
-
-  erb :search_results, locals: {
-    dogs: results,
-    user_id: current_user["id"]
-  }
-
+  if results.num_tuples == 0
+    erb :not_found
+  else 
+    erb :search_results, locals: {
+      dogs: results,
+      user_id: current_user["id"]
+    }
+  end 
 end
 
 #delete account
