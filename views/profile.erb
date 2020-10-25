@@ -17,6 +17,10 @@
 
 <% if current_user_id == dog_owner_id%>
     <a href="/dogs/<%= dog_id %>/edit">edit</a>
+    <form action="/dogs/<%= dog_id %>" method ="post">
+    <input type="hidden" name="_method" value ="delete">
+    <button>Delete Account</button>
+</form>
 <% else %>
     <a href="/dogs/<%= dog_id %>/messages">Message Me</a>
 

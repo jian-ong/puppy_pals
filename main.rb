@@ -150,7 +150,8 @@ get '/dogs/:recipient_id/messages' do
   AND recipient_id=#{recipient_dog["id"]})
   OR (sender_id=#{recipient_dog["id"]}
   AND recipient_id=#{current_dog["id"]}))
-  AND sender_id=dogs.id;
+  AND sender_id=dogs.id
+  ORDER BY created_at DESC;
   "
 
   results = run_sql(sql)
@@ -264,3 +265,14 @@ get '/search_results' do
 
 end
 
+#delete account
+delete '/dogs/:id' do 
+  delete_messages = "DELETE FROM messages WHERE sender_id = #{params['id']} OR recipient_id=#{params['id']};"
+  run_sql(delete_messages)
+  delete_dog = "DELETE FROM dogs WHERE id = #{params['id']};"
+  run_sql(delete_dog)
+  delete_user = "DELETE FROM users WHERE id = #{session[:user_id]};"
+  run_sql(delete_user)
+  session[:user_id] = nil
+  redirect '/'
+end
