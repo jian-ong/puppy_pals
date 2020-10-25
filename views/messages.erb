@@ -1,4 +1,4 @@
-<h1>Conversations with <%= recipient_dog['username'] %></h1>
+<h1>Conversations with <a href="/dogs/<%= recipient_dog['id'] %>"><%= recipient_dog['username'] %></a></h1>
 
 
 <% messages.each do |message| %>

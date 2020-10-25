@@ -17,6 +17,7 @@ a {
 
 a.hover {
     cursor: pointer;
+    color: rgb(18, 99, 18);
 }
 
 button.hover {
