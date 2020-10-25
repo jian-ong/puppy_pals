@@ -1,22 +1,12 @@
 <head>
     <link rel="stylesheet" href="/stylesheets/homepage.css">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Pacifico&display=swap" rel="stylesheet">
-
 </head>
 
 <body>
     <header>
         <% if logged_in? %>
-        <% dog = find_dog_by_user_id(current_user['id'])%>
-        <a href="/dogs/<%= dog['id'] %>">Your Profile</a>
-        <a href="#">Messages</a>
-        <a href="/search">Search</a>
         <p>You are logged in as <%= current_user['email'] %></p>
-
-        <form action="/logout" method="post">
-            <input type="hidden" name="_method" value="delete">
-            <button>Log out</button>
-        </form>
         <% end %>
         <div class="title">
             <h1>Puppy Pals</h1>
@@ -47,7 +37,19 @@
         </div>
 
         <div class="login_signup">
-            <% unless logged_in? %>
+            <% if logged_in? %>
+                <section class ="nav_bar">
+                <a href="/">Home</a>
+                <% dog = find_dog_by_user_id(current_user['id'])%>
+                <a href="/dogs/<%= dog['id'] %>">Your Profile</a>
+                <a href="/my_messages">My Messages</a>
+                <a href="/search">Search</a>
+                <form class ="logout" action="/logout" method="post">
+                    <input type="hidden" name="_method" value="delete">
+                    <button>Log out</button>
+                </form>
+                </section>
+            <% else %>
                 <!-- login form --> 
                 <h3>Sign in</h3>
                 <form action="/login" method = "post">
@@ -55,16 +57,14 @@
                 <br>
                 <input type="password" name = "password" placeholder="Password" value = "">
                 <br>
-                <button>Log In</button>
+                <button class="login">Log In</button>
                 </form>
                 <br>
 
                 <!-- sign up -->
                 <p>New member?</p>
-                <a href="/dogs/new"> Sign Up </a>
+                <a class="signup" href="/dogs/new"> Sign Up </a>
             <% end %>
         </div>
-        
-
     </section>
 </body>
