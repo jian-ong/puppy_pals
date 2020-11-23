@@ -2,7 +2,14 @@
 
 <b>GA SEI Project 2</b>
 
-Working project deployed on heroku <a href="https://ancient-eyrie-18788.herokuapp.com/">here</a>.
+Click <a href="https://ancient-eyrie-18788.herokuapp.com/">here</a> for working project deployed on heroku. <br>
+<br>
+Demo Username: user1@testing<br>
+Demo Password: pudding
+
+![login page](/pl1.png?raw=true "login page")
+![profile](/pl2.png?raw=true "profile page")
+![messages](/pl3.png?raw=true "message friends")
 
 <b>The Project: </b> <br>
 This project was made for done 6 weeks into the Software Engineering Immersive course.
@@ -27,10 +34,6 @@ Ruby, HTML, CSS, SQL, Postgres, Sinatra, BCrypt
 
 <b>The Brief:</b> <br>
 # **Project #2: Building Your First Full-stack Application**
-
-### **Timetable**
-
-60 second pitch - 11:00am presentation - Monday 10:30am
 
 ### **Overview**
 
@@ -63,26 +66,3 @@ Your app must:
 - **A `readme.md` file** with explanations of the technologies used, the approach taken, installation instructions, unsolved problems, etc.
 - **Wireframes of your app**, hosted somewhere & linked in your readme (photos of your sketches on paper or whiteboard are fined)
 - A link in your `readme.md` to the publically-accessible planning diagrams
-
----
-
-### **Bonus**
-
-- Interact with a external API
-
-### **Suggested Ways to Get Started**
-
-- **Begin with the end in mind.** Know where you want to go by planning with wireframes & user stories, so you don't waste time building things you don't need
-- **Don’t hesitate to write throwaway code to solve short term problems**
-- **Read the docs for whatever technologies you use.** Most of the time, there is a tutorial that you can follow, but not always, and learning to read documentation is crucial to your success as a developer
-- **Commit early, commit often.** Don’t be afraid to break something because you can always go back in time to a previous version.
-- **User stories define what a specific type of user wants to accomplish with your application**. It's tempting to just make them *to-do lists* for what needs to get done, but if you keep them small & focused on what a user cares about from their perspective, it'll help you know what to build
-- **Write pseudocode before you write actual code.** Thinking through the logic of something helps.
-
-### **Useful Resources**
-
-- **[Heroku](http://www.heroku.com/)** *(for hosting your back-end)*
-- **[Presenting Information Architecture](http://webstyleguide.com/wsg3/3-information-architecture/4-presenting-information.html)** *(for more insight into wireframing)*
-- [Postgresql SQL commands](https://www.postgresql.org/docs/9.1/static/sql-commands.html)
-- **[Trello](https://trello.com/)** for tracking your todo list/user stories
-- **[https://sqlbolt.com/](https://sqlbolt.com/)**
